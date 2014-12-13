@@ -1,11 +1,14 @@
-language: php
+language: haskell
 
-php:
-  - 5.5
+ghc:
+  - 7.6
 
 env:
   - PORT=9531 HOST=0.0.0.0
 
+install:
+  - cabal install shellcheck-0.3.5
+
 script:
   - ./servies sample.sh &
-  - make test
+  - make lint test
